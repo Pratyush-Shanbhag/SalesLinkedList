@@ -26,6 +26,13 @@ class Sales
         int getYear() { return year; }
         string getName() { return name; }
         int getAmount() { return amountSold; }
+    
+        void display() const;
+        double detAmountEarned() const;
+        double detCommissionPercent() const;
+    
+        bool operator < (const Sales &);
+        friend ostream &operator << (ostream &, Sales &);
 };
 
 #endif
