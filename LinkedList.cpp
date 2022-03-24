@@ -60,3 +60,59 @@ bool LinkedList::deleteNode(string target)
 
    return deleted;
 }
+
+void LinkedList::displayList() const
+{
+   Node *pCur;  // To move through the list.
+
+   pCur = head->next;
+
+   while (pCur != NULL)
+   {
+      cout << pCur->data;
+
+      pCur = pCur->next;
+   }
+}
+
+void LinkedList::displayList(int year) const
+{
+   Node *pCur;  // To move through the list.
+
+   pCur = head->next;
+   
+   bool hired = false;
+
+   while (pCur != NULL)
+   {
+      if(pCur->data.getYear() == year)
+      {
+         hired = true;
+         cout << pCur->data;
+      }
+
+      pCur = pCur->next;
+   }
+   
+   if(!hired)
+      cout << "N/A" << endl;
+}
+
+double LinkedList::average() const
+{
+   Node *pCur;
+   
+   pCur = head->next;
+   
+   double sum = 0;
+   int count = 0;
+   
+   while(pCur != NULL)
+   {
+      sum += pCur->data.getAmount();
+      count++;
+      pCur = pCur->next;
+   }
+   
+   return sum/count;
+}
