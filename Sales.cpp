@@ -54,3 +54,18 @@ double Sales::detAmountEarned() const
 {    
    return amountSold * detCommissionPercent();
 }
+
+bool Sales::operator < (const Sales & right)
+{   
+   return name < right.name;
+}
+
+ostream &operator << (ostream &out, Sales &obj)
+{
+   
+   out << setprecision(2) << fixed << setfill(' ');
+   out << obj.year << " " << setw(24) << left << obj.name;
+   out << setw(6) << right << obj.detAmountEarned() << endl;
+   
+   return out;
+}
