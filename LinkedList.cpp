@@ -63,7 +63,7 @@ bool LinkedList::deleteNode(string target)
 
 void LinkedList::displayList() const
 {
-   Node *pCur;  // To move through the list.
+   Node *pCur;
 
    pCur = head->next;
 
@@ -77,7 +77,7 @@ void LinkedList::displayList() const
 
 void LinkedList::displayList(int year) const
 {
-   Node *pCur;  // To move through the list.
+   Node *pCur;
 
    pCur = head->next;
    
@@ -115,4 +115,45 @@ double LinkedList::average() const
    }
    
    return sum/count;
+}
+
+bool LinkedList::searchList(string targetName, Sales &output) const
+{
+   bool found = false;
+   
+   Node *pCur;
+   
+   pCur = head->next;
+   
+   while(pCur != NULL && !found)
+   {
+      if(pCur->data.getName() == targetName)
+      {
+         found = true;
+         output = pCur->data;
+      }
+      
+      pCur = pCur->next;
+   }
+   
+   return found;
+}
+
+LinkedList::~LinkedList()
+{
+    Node *pCur;
+    Node *pNext;
+    
+    pCur = head->next;
+
+    while(pCur != NULL)
+    {
+        pNext = pCur->next;
+        
+        delete pCur;
+        
+        pCur = pNext;
+    }
+    
+    delete head;
 }
