@@ -125,18 +125,12 @@ bool LinkedList::searchList(string targetName, Sales &output) const
    
    pCur = head->next;
    
-   while(pCur != NULL && !found)
-   {
-      if(pCur->data.getName() == targetName)
-      {
-         found = true;
-         output = pCur->data;
-      }
-      
+   while(pCur->next != NULL && targetName < pCur->data.getName())
+   {  
       pCur = pCur->next;
    }
    
-   return found;
+   return pCur->data.getName() == targetName;
 }
 
 LinkedList::~LinkedList()
