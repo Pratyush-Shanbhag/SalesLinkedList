@@ -114,15 +114,8 @@ void searchList(const LinkedList &list)
     cout << "___________________END SEARCH SECTION _____" << endl;
 }
 
-/*
-Display manager: all, average, or year hired reports including header and footer where appropriate,
- depending on the user's choice;
- displays the number of nodes (always)
-Input Parameter: list
-*/
 void displayList(const LinkedList &list)
 {
-    // Sub-functions of displayManager()
     void showMenu(void);
     string getOption(void);
     void showHeader(string line);
@@ -159,4 +152,39 @@ void displayList(const LinkedList &list)
         option = getOption();
     }
     cout << "Number of salespeople: " << list.getLength() << endl;
+}
+
+void showHeader(string line)
+{
+    cout << line;
+    cout << "Year" << " " << left << setw(20) << "Name"
+         << " Amount Earned" << endl;
+    cout << line;
+}
+
+string getOption(void)
+{    
+    string option;
+    cout << "What is your option [A/G/Y/Q]?" << endl;
+    cin >> option;
+    cin.ignore();
+    option[0] = toupper(option[0]);
+    while (option != "A" && option != "G" && option != "Y" && option != "Q")
+    {
+        cout << "Invalid Option: Try again!";
+        cout << "What is your option [A/G/Y/Q]?" << endl;
+        cin >> option;
+        cin.ignore();
+        option[0] = toupper(option[0]);
+    }
+    return option;
+}
+
+void showMenu(void)
+{
+    cout << "The following reports are available: " << endl;
+    cout << "[A] - All" << endl
+         << "[G] - Average" << endl
+         << "[Y] - Year Hired" << endl
+         << "[Q] - Quit" << endl;
 }
